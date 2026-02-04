@@ -121,7 +121,7 @@ export default function Portfolio() {
       className={`min-h-screen transition-colors duration-300 ${isDarkMode ? "bg-slate-900 text-white" : "bg-slate-50 text-slate-900"}`}
     >
       {/* --- HEADER --- */}
-      <nav className="sticky top-0 z-40 w-full backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 py-4 bg-white/70 dark:bg-slate-900/70">
+      <nav className=" sticky top-0 z-40 w-full backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 py-4 bg-white/70 dark:bg-slate-900/70">
         <div className="max-w-5xl mx-auto flex justify-between items-center">
           <button
             onClick={() => setShowProfileModal(true)}
@@ -226,86 +226,111 @@ export default function Portfolio() {
           </motion.div>
         )}
       </AnimatePresence>
+      {/* SIDEBAR */}
+      <aside
+        className="fixed z-50 left-0 top-0 h-screen w-20 md:w-28 
+  flex flex-col justify-center items-center 
+  "
+      >
+        {/* NAV */}
+        <nav className="absolute top-24 flex flex-col gap-6 text-xs tracking-widest  text-[#000000] max-xl:hidden transition">
+          <a href="#about" className="hover:text-blue-600 transition">
+            ABOUT
+          </a>
+          <a href="#experience" className="hover:text-blue-600 transition">
+            EXPERIENCE
+          </a>
+          <a href="#projects" className="hover:text-blue-600 transition">
+            PROJECTS
+          </a>
+        </nav>
 
-      {/* --- MAIN CONTENT --- */}
-      <main className="max-w-5xl mx-auto py-16 px-6">
-        {/* HERO */}
-        <section className="flex flex-col md:flex-row items-center gap-12 mb-24">
-          <div className="flex-1 space-y-6">
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight">
-              {t.title}{" "}
-              <span className="text-blue-600 underline decoration-blue-200">
-                futur
-              </span>
-              .
-            </h1>
-            <p className="text-xl text-slate-500 dark:text-slate-400 max-w-2xl">
-              {t.intro}{" "}
-              <span className="font-bold text-slate-900 dark:text-white text-2xl">
-                Henintsoa
-              </span>
-              . {t.description}
-            </p>
-            <div className="flex gap-4">
-              {/* GitHub */}
-              <a
-                href="https://github.com/TON_GITHUB"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 border border-slate-200 dark:border-slate-700 rounded-2xl hover:bg-blue-600 hover:text-white transition-all shadow-sm"
-              >
-                <Github size={24} />
-              </a>
+        {/* SOCIALS */}
+        <div className="fixed bottom-10 z-10 flex flex-col gap-4 ">
+          {/* GitHub */}
+          <a
+            href="https://github.com/TON_GITHUB"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 border border-slate-200 dark:border-slate-700 rounded-2xl max-xl:bg-[#0062ff5f] hover:bg-blue-600 hover:text-white transition-all shadow-sm"
+          >
+            <Github size={24} />
+          </a>
 
-              {/* LinkedIn */}
-              <a
-                href="https://linkedin.com/in/TON_LINKEDIN"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 border border-slate-200 dark:border-slate-700 rounded-2xl hover:bg-blue-600 hover:text-white transition-all shadow-sm"
-              >
-                <Linkedin size={24} />
-              </a>
+          {/* LinkedIn */}
+          <a
+            href="https://linkedin.com/in/TON_LINKEDIN"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 border border-slate-200 dark:border-slate-700 rounded-2xl max-xl:bg-[#0062ff5f] hover:bg-blue-600 hover:text-white transition-all shadow-sm"
+          >
+            <Linkedin size={24} />
+          </a>
 
-              {/* Email */}
-              <a
-                href="mailto:TON_EMAIL@gmail.com"
-                className="p-3 border border-slate-200 dark:border-slate-700 rounded-2xl hover:bg-blue-600 hover:text-white transition-all shadow-sm"
-              >
-                <Mail size={24} />
-              </a>
+          {/* Email */}
+          <a
+            href="mailto:TON_EMAIL@gmail.com"
+            className="p-3 border border-slate-200 dark:border-slate-700 rounded-2xl max-xl:bg-[#0062ff5f] hover:bg-blue-600 hover:text-white transition-all shadow-sm"
+          >
+            <Mail size={24} />
+          </a>
+        </div>
+      </aside>
+      <div className="">
+        {/* tout ton contenu existant */}
+        {/* --- MAIN CONTENT --- */}
+        <main className="max-w-5xl ml-auto mr-auto py-16 px-6">
+          {/* HERO */}
+          <section className="flex flex-col md:flex-row items-center gap-12 mb-24">
+            <div className="flex-1 space-y-6">
+              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight">
+                {t.title}{" "}
+                <span className="text-blue-600 underline decoration-blue-200">
+                  futur
+                </span>
+                .
+              </h1>
+              <p className="text-xl text-slate-500 dark:text-slate-400 max-w-2xl">
+                {t.intro}{" "}
+                <span className="font-bold text-slate-900 dark:text-white text-2xl">
+                  Henintsoa
+                </span>
+                . {t.description}
+              </p>
             </div>
-          </div>
-          <div className="w-56 h-56 bg-blue-600 rounded-[2rem] rotate-6 flex items-center justify-center shadow-2xl overflow-hidden relative group">
-            <div className="absolute inset-0 bg-blue-400 rotate-12 group-hover:rotate-0 transition-transform duration-500"></div>
-            <Code2 size={100} className="text-white -rotate-6 relative z-10" />
-          </div>
-        </section>
-
-        {/* PROJECTS */}
-        <section>
-          <h2 className="text-3xl font-bold mb-12 dark:text-white">
-            {t.projectsTitle}
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((p) => (
-              <ProjectCard
-                key={p.title}
-                title={p.title}
-                desc={p.desc}
-                tags={p.tags}
-                url={p.url}
-                t={t}
+            <div className="w-56 h-56 bg-blue-600 rounded-[2rem] rotate-6 flex items-center justify-center shadow-2xl overflow-hidden relative group">
+              <div className="absolute inset-0 bg-blue-400 rotate-12 group-hover:rotate-0 transition-transform duration-500"></div>
+              <Code2
+                size={100}
+                className="text-white -rotate-6 relative z-10"
               />
-            ))}
-          </div>
-        </section>
+            </div>
+          </section>
+          {/* PROJECTS */}
+          <section>
+            <h2 className="text-3xl font-bold mb-12 dark:text-white">
+              {t.projectsTitle}
+            </h2>
 
-        <footer className="mt-32 py-10 border-t border-slate-200 dark:border-slate-800 text-center text-slate-500">
-          © 2026 • Henintsoa ANDRIAMIFEHIMANJAKA
-        </footer>
-      </main>
+            <div className="grid md:grid-cols-2 gap-8">
+              {projects.map((p) => (
+                <ProjectCard
+                  key={p.title}
+                  title={p.title}
+                  desc={p.desc}
+                  tags={p.tags}
+                  url={p.url}
+                  t={t}
+                />
+              ))}
+            </div>
+          </section>
+
+          <footer className="mt-32 py-10 border-t border-slate-200 dark:border-slate-800 text-center text-slate-500">
+            © 2026 • Henintsoa ANDRIAMIFEHIMANJAKA
+          </footer>
+        </main>
+      </div>
     </div>
   );
 }
